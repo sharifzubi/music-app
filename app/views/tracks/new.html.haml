@@ -1,0 +1,29 @@
+%h2 Add a new Track
+
+- if @track.errors.any?
+  .error-messages
+    %h2 Form is invalid
+    %ul
+      - @user.errors.full_messages.each do |message|
+        %li= message
+
+= form_for(@track) do |f|
+  .field
+    = f.label :title
+    = f.text_field :title
+    %br/
+
+    = f.label :release_date
+    = f.text_field :release_date
+    %br/
+
+    = f.label :audio
+    = f.file_field :audio
+    %br/
+
+    = f.submit class: "btn btn-primary"
+
+%p
+= link_to "Back to Profile", current_user
+
+/ = render 'form'

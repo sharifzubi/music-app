@@ -1,0 +1,19 @@
+= form_for(@track) do |f|
+
+  = f.label :title
+  = f.text_field :title
+  %br
+
+  = f.label :release_date
+  = f.text_field :release_date
+  %br
+
+  = f.label :audio
+  = f.file_field :audio
+  %br
+
+  / = f.label :comments
+  / = f.text_field :comments
+  / %br
+
+  = f.submit class: "btn btn-primary"

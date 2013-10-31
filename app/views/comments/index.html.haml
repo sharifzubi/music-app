@@ -1,0 +1,8 @@
+%h1 Comments
+
+#{link_to('Show Flagged Comments', flagged_comments_path)}
+
+- @comments.each do |comment|
+  %h3= link_to comment.text, comment_path(comment)
+
+/= link_to "New Comment", new_comment

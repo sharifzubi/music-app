@@ -1,0 +1,47 @@
+%h2 Add a new User
+
+- if @user.errors.any?
+  .error-messages
+    %h2 Form is invalid
+    %ul
+      - @user.errors.full_messages.each do |message|
+        %li= message
+
+= form_for(@user) do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+    %br/
+
+    = f.label :image
+    = f.file_field :image
+    %br/
+
+    = f.label :role
+    = f.text_field :role
+    %br/
+
+    = f.label :email
+    = f.text_field :email
+    %br/
+
+    = f.label :password
+    = f.password_field :password
+    %br/
+
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+    %br/
+
+    = f.label :genre
+    = f.text_field :genre
+    %br/
+
+    = f.label :about
+    = f.text_field :about
+    %br/
+
+    = f.submit class: "btn btn-primary"
+
+%p
+= link_to "Back to Homepage", root_url

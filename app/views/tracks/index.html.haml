@@ -1,0 +1,7 @@
+%h1 Tracks
+
+- @tracks.each do |track|
+  %h3= link_to track.title, track_path(track)
+
+%p
+= link_to("Add Track", new_track_path)

@@ -1,0 +1,45 @@
+%h2= @user.name
+
+%p
+  = image_tag @user.image.detail.url
+%p
+  %b Role:
+  = @user.role
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Genre:
+  = @user.genre
+%p
+  %b About
+  = @user.about
+
+%br
+%p
+= link_to "Edit User", edit_user_path(@user)
+|
+= link_to "Delete User", user_path(@user), method: :delete
+
+%h3 Tracks
+%br
+%ul
+  - @user.tracks.each do |track|
+    .user-track
+      %li
+        %h4= link_to track.title, track #make it track.title ONLY
+        / %audio{controls: "controls"}
+        /   %source{src: "#{track.audio}"}
+%br
+
+= link_to "Add Track", new_track_path
+
+/= link_to "Remove Track", user_path, :method => :delete
+
+/ - @track.comments
+
+/ %br
+/ %p
+/ = link_to "Edit User", edit_user_path(@user)
+/ |
+/ = link_to "Delete User", user_path(@user), method: :delete

@@ -1,0 +1,13 @@
+%h2 Add a new Comment
+
+= form_for(@comment) do |f|
+  .field
+    = f.label :text
+    = f.text_field :text
+    = hidden_field_tag :track_id, @track.id
+    %br/
+    = f.submit class: "btn btn-primary"
+
+
+%p
+= link_to "Back to Track", @track

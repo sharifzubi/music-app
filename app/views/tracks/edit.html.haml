@@ -1,0 +1,10 @@
+%h2 Edit #{@track.title}
+
+= render 'form'
+
+/ = form_tag track_path(@track), method: :put do
+
+/   = label_tag :track
+/   = select_tag :track_id, options_from_collection_for_select(Track.all, 'id', 'title')
+
+/  = submit_tag

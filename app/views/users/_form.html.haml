@@ -1,0 +1,36 @@
+= form_for(@user) do |f|
+
+  = f.label :name
+  = f.text_field :name
+  %br
+
+  = f.label :image
+  = f.file_field :image
+  %br
+
+  = f.label :role
+  = select(:user, :role, [['Artist'], ['Listener']])
+  %br
+
+  = f.label :email
+  = f.text_field :email
+  %br
+
+  = f.label :password
+  = f.text_field :password
+  %br
+
+  = f.label :genre
+  = f.text_field :genre
+  %br
+
+  = f.label :about
+  = f.text_area :about
+  %br
+
+  = f.label :css
+  = f.text_area :css
+  %br
+
+
+  = f.submit class: "btn btn-primary"

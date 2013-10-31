@@ -1,0 +1,7 @@
+%h1 Users
+
+- @users.each do |user|
+  %h3= link_to user.name, user_path(user)
+
+/- link_to track.audio, track
+/- redirect_to user_path
