@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
 
-  #load_and_authorize_resource
+  load_and_authorize_resource
 
   def index
-    @comments = Comment.all
+    #@comments = Comment.all
   end
 
   def new
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
       if @comment.save
         redirect_to @comment.track, notice: "Comment was successfully created"
       else
-        flash[:alert] = "Recipe was not created"
+        flash[:alert] = "Comment was not created"
         render :new
       end
   end
@@ -32,30 +32,32 @@ class CommentsController < ApplicationController
   end
 
   def update
-    # comment = Comment.find(params[:id])
-    # comment.update_attributes(params[:comment])
-    # redirect_to(comment)
-    if @comment.update_attributes(params[:comment])
-      redirect_to @comment
-    else
-      flash[:alert] = "Recipe was not updated"
-      render :edit
-    end
+  #   comment = Comment.find(params[:id])
+  #   comment.update_attributes(params[:comment])
+  #   redirect_to(comment)
+  #   # if @comment.update_attributes(params[:comment])
+  #   #   redirect_to @comment
+  #   # else
+  #   #   flash[:alert] = "Comment was not updated"
+  #   #   render :edit
+  #   # end
   end
 
   def destroy
-    # comment = Comment.find(params[:id])
-    # comment.delete
-    # redirect_to(comments_path)
-    @comment.delete
-    redirect_to comments_path
+    comment = Comment.find(params[:comment_id])
+    comment.delete
+    track = comment.track
+    redirect_to(track)
+    # @comment.delete
+    # redirect_to comments_path
   end
 
   def flag
-    @comment = Comment.find(params[:id])
-    @comment.flagged = true
-    @comment.save
-    render :show
+    comment = Comment.find(params[:comment_id])
+    comment.flagged = true
+    comment.save
+    flash[:notice] = "Comment was flagged!"
+    redirect_to comment.track
   end
 
   def flagged

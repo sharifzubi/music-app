@@ -10,8 +10,6 @@ MusicApp::Application.routes.draw do
 
   resources :tracks
 
-  #resources :comments
-
   resources :comments do
     member do
       put :flag
@@ -19,9 +17,11 @@ MusicApp::Application.routes.draw do
     collection do
       get :flagged
     end
-    resources :comments, :only => :create
+    resources :comments  # :only => :create
   end
   get "/tracks/:track_id/comments/new", to: "comments#new"
+  get "/comments/:comment_id/flag", to: "comments#flag"
+  get "/comments/:comment_id/delete", to: "comments#destroy"
 
   root to: 'home#index'
 

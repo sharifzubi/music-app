@@ -7,18 +7,19 @@
   = csrf_meta_tags
 
   %style
-    @style
+    = @style
 
   %body
-    %nav.navbar
-      -if current_user
-        %ul.right-nav
-          Logged in as #{current_user.name},
-          = link_to 'Logout', :logout_path, method: :delete
-      .clear
+    .container
+      %nav.navbar
+        -if current_user
+          %ul.right-nav
+            Logged in as #{current_user.name},
+            = link_to 'Logout', :logout_path, method: :delete
+        .clear
 
-    - flash.each do |name, message|
-      %div(class="flash-message flash-#{name}")
-        = message
+      - flash.each do |name, message|
+        %div(class="flash-message flash-#{name}")
+          = message
 
-= yield
+      = yield

@@ -1,5 +1,5 @@
 %h2 Comment
 
-#{link_to ('Flag Comment', flag_comment_path(@comment, :method => :put)}
+= link_to "Flag Comment", flag_comment_path(@comment), :method => :put
 
 = @comment.text

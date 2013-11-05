@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
     self.role == r.to_s
   end
 
+  def render_css
+    "body { #{self.css }}"
+  end
+
 end

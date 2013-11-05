@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
 Track.delete_all
-Comment.delete_all
 
 
 #Users

@@ -3,5 +3,9 @@
 - @tracks.each do |track|
   %h3= link_to track.title, track_path(track)
 
+- if can? :create, Track
+  %p
+  = link_to("Add Track", new_track_path)
+
 %p
-= link_to("Add Track", new_track_path)
+= link_to("Back to Profile", current_user)

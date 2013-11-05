@@ -9,4 +9,8 @@
     %br/
     = password_field_tag :password
   .actions
-    = submit_tag "Login!"
+  %br
+    = submit_tag "Login!", class: "btn btn-primary"
+
+%p
+= link_to "Back to Homepage", root_url

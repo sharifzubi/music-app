@@ -18,7 +18,7 @@
     %br/
 
     = f.label :role
-    = f.text_field :role
+    = select(:user, :role, [['Artist'], ['Listener']])
     %br/
 
     = f.label :email

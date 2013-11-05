@@ -1,13 +1,13 @@
-%div
-  %h1 Welcome to my Music App
+= stylesheet_link_tag    "home"
+
+%h1.title Welcome to my Music App
 
 %h5 "You know what to do!"
 
 = image_tag "/images/photo_yea.JPG", width: 700
 // %img{ :src => "/images/photo_yea.JPG"}
 
-%body
 %p
-= link_to "Sign Up", :signup_path
+= link_to "Sign Up", :signup_path, class: "btn btn-danger"
 |
-= link_to "Login", :login_path
+= link_to "Login", :login_path, class: "btn btn-danger"

@@ -7,17 +7,12 @@
 %audio{controls: "controls"}
   %source{src: "#{@track.audio}"}
 
-
-%br/
-= link_to "Edit Track", edit_track_path(@track)
-|
-= link_to "Delete Track", track_path(@track), method: :delete
-
-/ -if current_user
-/   %ul.right-nav
-/   %li
-/     Logged in as #{current_user.name},
-/     = link_to 'Logout', :logout_path, method: :delete
+- if can? :update, Track
+  %br/
+  = link_to "Edit Track", edit_track_path(@track)
+  |
+  - if can? :destroy, @track
+    = link_to "Delete Track", track_path(@track), method: :delete
 
 
 %h5 Comments
@@ -26,12 +21,21 @@
   .track-comment
   %p
     = comment.text
+    \::
     = comment.user.name
-    = link_to 'Flag', flag_comment_path
-  %br
 
-= link_to "Add Comment", "/tracks/#{@track.id}/comments/new"
-%br
+    - if can? :flag, Comment
+      = link_to 'Flag', "/comments/#{comment.id}/flag"
+    %br
+    - if can? :destroy, Comment
+      = link_to 'Delete', "/comments/#{comment.id}/delete"
+      %br
+
+      %p
+    - if can? :create, Comment
+      = link_to "Add Comment", "/tracks/#{@track.id}/comments/new"
 
 %p
 = link_to "Back to User Profile", @track.user
+|
+= link_to "Back to My Profile", current_user
