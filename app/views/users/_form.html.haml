@@ -8,8 +8,9 @@
   = f.file_field :image
   %br
 
-  = f.label :role
-  = select(:user, :role, [['Artist'], ['Listener']])
+  - if current_user.role != 'admin'
+    = f.label :role
+    = select(:user, :role, [['Artist'], ['Listener']])
   %br
 
   = f.label :email
